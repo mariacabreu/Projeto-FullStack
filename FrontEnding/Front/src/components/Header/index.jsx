@@ -1,24 +1,22 @@
+import Logo from "../../assets/LogoS.png";  
+import Carrinho from "../../assets/carrinho-de-compras.png";  
 import "./style.css";
 
 export default function Header() {
   return (
     <header className="header-container">
       
-      {/* --- TOPO DO HEADER (links) --- */}
       <div className="header-top">
         <a href="#">Nossas lojas</a>
         <a href="#">Trabalhe Conosco</a>
       </div>
 
-      {/* --- MEIO DO HEADER (pesquisa + login + carrinho) --- */}
       <div className="header-main">
 
-        {/* Logo — removido */}
         <div className="logo">
-          <span className="logo-text">LOGO</span>
+          <img src={Logo} alt="Logo" className="logo-img" />
         </div>
 
-        {/* Barra de pesquisa */}
         <div className="search-bar">
           <input
             type="text"
@@ -27,7 +25,6 @@ export default function Header() {
           <button>Buscar</button>
         </div>
 
-        {/* Login */}
         <div className="login-area">
           <div className="login-text">
             <span>Bem-vindo</span>
@@ -35,9 +32,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Carrinho */}
+        {/* Carrinho apenas com ícone + contador */}
         <div className="cart">
-          <span>Carrinho (0)</span>
+          <img src={Carrinho} alt="Carrinho" className="cart-icon" />
+          <span className="cart-count">0</span>
         </div>
 
       </div>

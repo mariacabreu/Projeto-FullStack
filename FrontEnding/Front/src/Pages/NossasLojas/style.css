@@ -1,0 +1,67 @@
+.lojas-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 20px 100px 20px; /* topo maior para header fixo, bottom maior para footer */
+  font-family: Arial, sans-serif;
+}
+.titulo-geral {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+.lojas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+  border: 1px solid #eee;
+  font-family: Arial, sans-serif;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.logo {
+  width: 70px;
+  height: auto;
+  margin-bottom: 15px;
+}
+.titulo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+.endereco {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #555;
+  font-family: Arial, sans-serif;
+}
+@media (max-width: 480px) {
+  .titulo-geral {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 20px;
+  }
+  .titulo {
+    font-size: 1.2rem;
+  }
+  .endereco {
+    font-size: 0.95rem;
+  }
+}

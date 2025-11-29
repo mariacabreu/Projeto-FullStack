@@ -1,17 +1,21 @@
+/* ============================ */
+/* HEADER FIXO                  */
+/* ============================ */
 .header-container {
   width: 100%;
   background-color: #111;
   color: white;
   font-family: Arial, sans-serif;
-
-  position: fixed;      /* fixa no topo */
-  top: 0;               /* cola no topo */
-  left: 0;              /* cola no lado esquerdo */
-  right: 0;             /* cola no lado direito */
-  z-index: 999;         /* fica acima do conteúdo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
 
-/* ----------- TOPO (links) ---------- */
+/* ============================ */
+/* TOPO DO HEADER               */
+/* ============================ */
 .header-top {
   display: flex;
   justify-content: flex-end;
@@ -30,7 +34,9 @@
   text-decoration: underline;
 }
 
-/* ----------- MAIN (search, login, cart) ---------- */
+/* ============================ */
+/* HEADER MAIN                  */
+/* ============================ */
 .header-main {
   display: flex;
   align-items: center;
@@ -39,45 +45,61 @@
   background-color: #000;
 }
 
-/* Logo (como texto agora) */
-.logo-text {
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
+/* LOGO */
+.logo img {
+  width: 60px;
+  height: auto;
 }
 
-/* Barra de pesquisa */
+/* BARRA DE PESQUISA */
 .search-bar {
   display: flex;
-  width: 45%;
-  border-radius: 5px;
-  overflow: hidden;
+  align-items: center;
+  gap: 0;
+  width: 450px;
 }
 
 .search-bar input {
   flex: 1;
-  padding: 10px;
-  border: none;
+  padding: 12px 14px;
+  font-size: 15px;
   outline: none;
+  color: #333;
+  background: #fff;
+  border: 2px solid #555;
+  border-radius: 25px 0 0 25px;
 }
 
 .search-bar button {
-  background-color: #f26422;
+  background-color: #555;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 22px;
   cursor: pointer;
-  color: white;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 0 25px 25px 0;
+  height: 45px;
 }
 
 .search-bar button:hover {
-  background-color: #d5531e;
+  background-color: #444;
 }
 
-/* Login */
+/* LOGIN */
 .login-area {
   display: flex;
   flex-direction: column;
   font-size: 13px;
+}
+
+.login-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.login-text span {
+  margin-bottom: 2px;
 }
 
 .login-text a {
@@ -86,19 +108,45 @@
   text-decoration: none;
 }
 
-/* -------- AJUSTE QUE VOCÊ PEDIU -------- */
-.login-text {
-  display: flex;
-  flex-direction: column; /* deixa um em cima do outro */
-  line-height: 1.2;
-}
-
-.login-text span {
-  margin-bottom: 2px; /* separa 'Bem-vindo' do link */
-}
-
-/* Carrinho */
+/* CARRINHO */
 .cart {
   font-size: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 6px;
+}
+
+.cart-icon {
+  width: 24px;
+  height: auto;
+  display: block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #555;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Garante que o conteúdo não fique escondido atrás do footer fixo */
+body {
+  box-sizing: border-box;
+  padding-bottom: 120px; /* aumentar de 80px para a altura real do footer */
+}
+
+/* Se precisar empurrar ainda mais conteúdo específico */
+.lojas-wrapper {
+  padding-bottom: 20px; /* espaço extra para o último card não ficar colado no footer */
 }

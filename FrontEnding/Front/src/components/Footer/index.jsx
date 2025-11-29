@@ -6,12 +6,12 @@ export default function Footer() {
       <div className="footer-main">
         <div className="footer-text">
           <p>
-            <strong>Atacadão S.A.</strong> Avenida Morvan Dias de Figueiredo, 6169, Vila Maria, São Paulo - SP | CEP 02170-901 | CNPJ: 75.315.333/0001-09
+            <strong>Mercado Super Nova S.A.</strong> Avenida Morvan Dias de Figueiredo, 6169, Vila Maria, São Paulo - SP | CEP 02170-901 | CNPJ: 12.345.678/0001-90
           </p>
           <p>
             <strong>Envio de documentos administrativos e jurídicos:</strong> Avenida Morvan Dias de Figueiredo, 6169, Vila Maria, São Paulo - SP | CEP 02170-901
           </p>
-          <p>faleconosco@atacadao.com.br</p>
+          <p>faleconosco@mercadosupernova.com.br</p>
         </div>
         <div className="footer-security">
           <div className="lock-icon">🔒</div>
