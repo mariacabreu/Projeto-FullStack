@@ -1,0 +1,21 @@
+.home-container {
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.titulo-home {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* ORGANIZA OS CARDS LADO A LADO */
+.produtos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px;
+}
