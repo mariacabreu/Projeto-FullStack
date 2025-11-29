@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./Pages/Home";
-import NossasLojas from "./Pages/NossasLojas"; // ✔ importa automaticamente o index.jsx
+import NossasLojas from "./Pages/NossasLojas"; // export default no index.jsx
 
 function App() {
   return (
@@ -18,3 +18,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
+export default App;
