@@ -1,0 +1,159 @@
+/* ============================ */
+/* HEADER FIXO                  */
+/* ============================ */
+.header-container {
+  width: 100%;
+  background-color: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+/* ============================ */
+/* TOPO DO HEADER               */
+/* ============================ */
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 8px 20px;
+  font-size: 14px;
+  background-color: #1a1a1a;
+}
+
+.header-top a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-top a:hover {
+  text-decoration: underline;
+}
+
+/* ============================ */
+/* HEADER MAIN                  */
+/* ============================ */
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #000;
+}
+
+/* LOGO */
+.logo img {
+  width: 60px;
+  height: auto;
+}
+
+/* ============================ */
+/* BARRA DE PESQUISA            */
+/* ============================ */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 450px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 15px;
+  outline: none;
+  color: #333;
+  background: #fff;
+  border: 2px solid #555;
+  border-radius: 25px 0 0 25px;
+}
+
+.search-bar button {
+  background-color: #555;
+  border: none;
+  padding: 12px 22px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 0 25px 25px 0;
+  height: 45px;
+}
+
+.search-bar button:hover {
+  background-color: #444;
+}
+
+/* ============================ */
+/* LOGIN                        */
+/* ============================ */
+.login-area {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.login-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.login-text span {
+  margin-bottom: 2px;
+}
+
+.login-text a {
+  color: #f26422;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ============================ */
+/* CARRINHO                     */
+/* ============================ */
+.cart {
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 6px;
+}
+
+.cart-icon {
+  width: 24px;
+  height: auto;
+  display: block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #555;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================ */
+/* AJUSTES DE ESPAÇAMENTO       */
+/* ============================ */
+body {
+  box-sizing: border-box;
+  padding-bottom: 120px;
+}
+
+.lojas-wrapper {
+  padding-bottom: 20px;
+}
