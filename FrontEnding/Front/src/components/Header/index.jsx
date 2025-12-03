@@ -1,5 +1,7 @@
 import Logo from "../../assets/LogoS.png";
 import Carrinho from "../../assets/carrinho-de-compras.png";
+import { Link } from "react-router-dom";
+
 import "./style.css";
 
 export default function Header() {
@@ -7,8 +9,8 @@ export default function Header() {
     <header className="header-container">
 
       <div className="header-top">
-        <a href="#">Nossas lojas</a>
-        <a href="#">Trabalhe Conosco</a>
+        <Link to="/nossaslojas">Nossas lojas</Link>
+        <Link to="/trabalheconosco">Trabalhe Conosco</Link>
       </div>
 
       <div className="header-main">

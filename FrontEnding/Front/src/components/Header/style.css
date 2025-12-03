@@ -39,16 +39,20 @@
 /* ============================ */
 .header-main {
   display: flex;
-  align-items: center;
+  align-items: center; /* centraliza verticalmente */
   justify-content: space-between;
   padding: 15px 20px;
   background-color: #000;
+
+  height: 80px; /* altura fixa do header */
 }
 
 /* LOGO */
 .logo img {
-  width: 60px;
-  height: auto;
+  height: 80px;      /* aumenta a logo sem aumentar o header */
+  width: auto;       /* mantém proporção */
+  object-fit: contain; /* evita distorção */
+  transform: translateY(10px); /* desce a logo 5px */
 }
 
 /* ============================ */
