@@ -1,6 +1,6 @@
 import "./ProdutosCard.css";
 
-export default function ProdutoCard({ imagem, nome, preco, badge }) {
+export default function ProdutoCard({ imagem, nome, preco, badge, onAdd }) {
   return (
     <div className="produto-card">
 
@@ -16,7 +16,10 @@ export default function ProdutoCard({ imagem, nome, preco, badge }) {
         ou R$ {(preco * 0.99).toFixed(2)} / cada
       </p>
 
-      <button className="produto-btn">ADICIONAR</button>
-    </div> 
+      <button className="produto-btn" onClick={onAdd}>
+        ADICIONAR
+      </button>
+
+    </div>
   );
 }

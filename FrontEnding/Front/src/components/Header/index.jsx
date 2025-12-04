@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 
-export default function Header() {
+export default function Header({ cartCount }) {
   return (
     <header className="header-container">
 
       <div className="header-top">
+        <Link to="/">Home</Link>
         <Link to="/nossaslojas">Nossas lojas</Link>
         <Link to="/trabalheconosco">Trabalhe Conosco</Link>
       </div>
@@ -16,7 +17,9 @@ export default function Header() {
       <div className="header-main">
 
         <div className="logo">
-          <img src={Logo} alt="Logo" className="logo-img" />
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="logo-img" />
+          </Link>
         </div>
 
         <div className="search-bar">
@@ -30,15 +33,15 @@ export default function Header() {
         <div className="login-area">
           <div className="login-text">
             <span>Bem-vindo</span>
-            {/* Usando Link para navegar para /login */}
             <Link to="/login">Entre ou cadastre-se</Link>
           </div>
         </div>
 
-        <div className="cart">
+        {/* Carrinho agora é um Link */}
+        <Link to="/carrinho" className="cart">
           <img src={Carrinho} alt="Carrinho" className="cart-icon" />
-          <span className="cart-count">0</span>
-        </div>
+          <span className="cart-count">{cartCount}</span>
+        </Link>
 
       </div>
     </header>

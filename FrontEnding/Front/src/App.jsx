@@ -12,9 +12,9 @@ import TrabalheConosco from "./Pages/TrabalheConosco";
 import Login from "./Pages/Login"; // Página de login
 import Cadastro from "./Pages/Cadastro"; // Página de cadastro
 
-// Componentes do carrinho
-import Car from "./components/Car.jsx"; 
-import Summary from "./components/Summary";
+// Componentes do carrinho (corrigindo os caminhos)
+import Car from "./Pages/Carrinho/Car.jsx"; 
+import Summary from "./Pages/Carrinho/Summary.jsx";
 
 function App() {
   // Estado do carrinho
