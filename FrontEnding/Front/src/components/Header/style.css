@@ -22,7 +22,7 @@
   gap: 20px;
   padding: 8px 20px;
   font-size: 14px;
-  background-color: #1a1a1a;
+  background-color: #404040; /* <-- alterado aqui */
 }
 
 .header-top a {
@@ -42,7 +42,7 @@
   align-items: center; /* centraliza verticalmente */
   justify-content: space-between;
   padding: 15px 20px;
-  background-color: #000;
+  background-color: #525252; /* <-- alterado aqui */
 
   height: 80px; /* altura fixa do header */
 }

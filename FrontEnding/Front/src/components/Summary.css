@@ -1,0 +1,36 @@
+.summary {
+  flex: 1;
+}
+
+.summary-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.summary-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.delivery-label {
+  background: #000;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.line,
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.total-value {
+  font-size: 20px;
+  color: #000;
+  font-weight: 700;
+}
