@@ -1,87 +1,96 @@
+/* --- BASE GLOBAL (MESMO DO TRABALHE E DAS LOJAS) --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
 .home-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 20px 100px 20px; /* igual ao padrão das lojas */
-  font-family: Arial, sans-serif;
+
+  /* mesmo topo das lojas para alinhar com header fixo */
+  padding: 130px 20px 100px 20px;
 }
 
+/* --- TÍTULO PRINCIPAL (2.3rem IGUAL AO TRABALHE E LOJAS) --- */
 .titulo-home {
   text-align: center;
-  font-size: 2.5rem; /* igual ao título das lojas */
+  font-size: 2.3rem;   /* ALTERADO para 2.3rem */
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 35px; /* igual ao padrão */
   color: #222;
-  font-family: Arial, sans-serif;
 }
 
-/* GRID DE PRODUTOS — agora segue o mesmo padrão */
+/* --- GRID DE PRODUTOS (igual lojas) --- */
 .produtos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* igual às lojas */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
   justify-content: center;
   padding: 10px;
 }
 
-/* CARD PADRÃO — igual aos cards de lojas */
+/* --- CARD DE PRODUTO (igual card das lojas) --- */
 .produto-card {
   background: #fff;
   padding: 25px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border: 1px solid #eee;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: Arial, sans-serif;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .produto-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* IMAGEM DO PRODUTO */
+/* --- IMAGEM --- */
 .produto-img {
   width: 100%;
   max-width: 180px;
   height: auto;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 15px;
   display: block;
 }
 
-/* TÍTULO DO PRODUTO */
+/* --- NOME DO PRODUTO (1.3rem IGUAL TÍTULOS INTERNOS PADRÃO) --- */
 .produto-nome {
-  font-size: 1.2rem;
+  font-size: 1.3rem;   /* ALTERADO para 1.3rem */
   font-weight: 600;
   color: #333;
   margin-bottom: 10px;
 }
 
-/* PREÇO */
+/* --- PREÇO (1rem IGUAL AO RESTANTE das páginas) --- */
 .produto-preco {
-  font-size: 1.1rem;
+  font-size: 1rem;     /* ALTERADO */
   color: #555;
   margin-bottom: 15px;
 }
 
-/* BOTÃO */
+/* --- BOTÃO (mantido igual ao padrão azul) --- */
 .produto-btn {
-  padding: 10px 18px;
+  padding: 12px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;     /* igual padrão */
 }
 
 .produto-btn:hover {
   background-color: #005fcc;
 }
 
-/* RESPONSIVIDADE */
+/* --- RESPONSIVO --- */
 @media (max-width: 480px) {
   .titulo-home {
     font-size: 2rem;
@@ -92,10 +101,10 @@
   }
 
   .produto-nome {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .produto-preco {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }

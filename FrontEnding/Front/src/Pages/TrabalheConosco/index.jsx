@@ -3,10 +3,16 @@ import { useState } from "react";
 
 export default function TrabalheConosco() {
   const [enviado, setEnviado] = useState(false);
+  const [arquivoNome, setArquivoNome] = useState("Nenhum arquivo selecionado");
 
   function enviarFormulario(e) {
     e.preventDefault();
     setEnviado(true);
+  }
+
+  function handleFileChange(e) {
+    const file = e.target.files[0];
+    setArquivoNome(file ? file.name : "Nenhum arquivo selecionado");
   }
 
   return (
@@ -62,11 +68,24 @@ export default function TrabalheConosco() {
           </div>
 
           {/* ----------------- CARD DIREITA (UPLOAD + BOTÃO) ----------------- */}
-          <div className="form-box">
+          <div className="form-box upload-box">
             <form onSubmit={enviarFormulario}>
+
               <div className="form-group">
                 <label>Anexar Currículo</label>
-                <input type="file" />
+
+                <div className="file-input-wrapper">
+                  <div className="file-input-button">
+                    <span>Escolher arquivo</span>
+                    <span className="file-name">{arquivoNome}</span>
+                  </div>
+
+                  <input
+                    type="file"
+                    onChange={handleFileChange}
+                    accept=".pdf,.doc,.docx"
+                  />
+                </div>
               </div>
 
               <button className="btn-enviar" type="submit">

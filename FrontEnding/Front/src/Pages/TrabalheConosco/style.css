@@ -1,11 +1,36 @@
-.trabalhe-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 140px auto 100px auto;
-  padding: 20px;
+/* --- RESET E BASE --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: Arial, sans-serif;
 }
 
+/* --- CONTAINER ENTRE HEADER E FOOTER --- */
+.trabalhe-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+
+  /* ===========================================
+       ALTERAÇÃO FEITA AQUI 👇
+       (ANTES: 110px — AGORA: 160px)
+     =========================================== */
+  margin-top: 120px;
+
+  min-height: calc(100vh - 200px);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  padding-bottom: 40px;
+
+  overflow: visible;
+}
+
+/* --- TÍTULO --- */
 .titulo-trabalhe {
   text-align: center;
   font-size: 2.3rem;
@@ -14,24 +39,40 @@
   color: #222;
 }
 
-/* --- GRID DOS DOIS CARDS (DADOS ESQUERDA / UPLOAD DIREITA) --- */
+/* --- GRID DOS CARDS --- */
 .trabalhe-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+  align-items: center;
 }
 
-/* --- ESTILO PADRÃO DOS CARDS --- */
+/* --- CARDS --- */
 .form-box {
   background: #fff;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border: 1px solid #eee;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* CARD DIREITA (UPLOAD) */
+.form-box.upload-box {
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+  align-self: center;
+}
+
+/* --- FORMULÁRIOS --- */
 .form-group {
   margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .form-group label {
@@ -58,9 +99,48 @@
   border-color: #007bff;
 }
 
+/* --- INPUT DE ARQUIVO --- */
+.file-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.file-input-wrapper input[type="file"] {
+  opacity: 0;
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.file-input-button {
+  width: 100%;
+  height: 70px;
+  background: #f2f2f2;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-name {
+  font-size: 15px;
+  color: #777;
+  font-style: italic;
+  margin-left: 10px;
+}
+
 /* --- BOTÃO --- */
 .btn-enviar {
   width: 100%;
+  max-width: 500px;
   background-color: #007bff;
   padding: 14px;
   border: none;
@@ -100,5 +180,6 @@
 @media (max-width: 768px) {
   .trabalhe-grid {
     grid-template-columns: 1fr;
+    align-items: stretch;
   }
 }
