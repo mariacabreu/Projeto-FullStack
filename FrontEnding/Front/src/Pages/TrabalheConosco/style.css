@@ -183,3 +183,11 @@ html, body {
     align-items: stretch;
   }
 }
+
+
+.erro {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
