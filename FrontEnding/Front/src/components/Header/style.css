@@ -111,7 +111,7 @@
 }
 
 .login-text a {
-  color: #f26422;
+  color: black;         /* ✔ ALTERADO DE LARANJA PARA PRETO */
   font-weight: bold;
   text-decoration: none;
 }

@@ -141,7 +141,7 @@ html, body {
 .btn-enviar {
   width: 100%;
   max-width: 500px;
-  background-color: #007bff;
+  background-color: #555;
   padding: 14px;
   border: none;
   color: white;
@@ -153,7 +153,7 @@ html, body {
 }
 
 .btn-enviar:hover {
-  background-color: #005fcc;
+  background-color: #303030;
 }
 
 /* --- CAIXA DE SUCESSO --- */

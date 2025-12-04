@@ -30,11 +30,11 @@ export default function Header() {
         <div className="login-area">
           <div className="login-text">
             <span>Bem-vindo</span>
-            <a href="#">Entre ou cadastre-se</a>
+            {/* Usando Link para navegar para /login */}
+            <Link to="/login">Entre ou cadastre-se</Link>
           </div>
         </div>
 
-        {/* Carrinho apenas com ícone + contador */}
         <div className="cart">
           <img src={Carrinho} alt="Carrinho" className="cart-icon" />
           <span className="cart-count">0</span>

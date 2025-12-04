@@ -1,18 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 // Componentes globais
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Páginas já existentes
+// Páginas
 import Home from "./Pages/Home";
 import NossasLojas from "./Pages/NossasLojas";
 import TrabalheConosco from "./Pages/TrabalheConosco";
+import Login from "./Pages/Login"; // Página de login
+import Cadastro from "./Pages/Cadastro"; // Página de cadastro
 
 // Componentes do carrinho
 import Car from "./components/Car.jsx"; 
 import Summary from "./components/Summary";
-import { useState } from "react";
 
 function App() {
   // Estado do carrinho
@@ -95,18 +97,26 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-
+      {/* Renderizamos Header/Footer apenas se NÃO estivermos em Login ou Cadastro */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/nossaslojas" element={<NossasLojas />} />
-        <Route path="/trabalheconosco" element={<TrabalheConosco />} />
-
-        {/* ROTA NOVA PARA O CARRINHO */}
-        <Route path="/carrinho" element={<CarrinhoPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route
+          path="*"
+          element={
+            <>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/nossaslojas" element={<NossasLojas />} />
+                <Route path="/trabalheconosco" element={<TrabalheConosco />} />
+                <Route path="/carrinho" element={<CarrinhoPage />} />
+              </Routes>
+              <Footer />
+            </>
+          }
+        />
       </Routes>
-
-      <Footer />
     </BrowserRouter>
   );
 }
