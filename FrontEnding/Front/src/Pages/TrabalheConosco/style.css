@@ -1,0 +1,104 @@
+.trabalhe-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 140px auto 100px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.titulo-trabalhe {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #222;
+}
+
+/* --- GRID DOS DOIS CARDS (DADOS ESQUERDA / UPLOAD DIREITA) --- */
+.trabalhe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* --- ESTILO PADRÃO DOS CARDS --- */
+.form-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+}
+
+/* --- BOTÃO --- */
+.btn-enviar {
+  width: 100%;
+  background-color: #007bff;
+  padding: 14px;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+  background-color: #005fcc;
+}
+
+/* --- CAIXA DE SUCESSO --- */
+.msg-sucesso {
+  text-align: center;
+  background: #eaffea;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #b6e7b6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.msg-sucesso h2 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.msg-sucesso p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+  .trabalhe-grid {
+    grid-template-columns: 1fr;
+  }
+}

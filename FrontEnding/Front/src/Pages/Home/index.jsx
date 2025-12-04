@@ -12,7 +12,6 @@ import Feijao from "../../assets/feijao.png";
 import Linguica from "../../assets/linguica.png";
 import Omo from "../../assets/omo.png";
 
-
 // Lista de produtos
 const produtos = [
   { id: 1, nome: "Arroz João 1kg", preco: 22.9, imagem: Arroz },
@@ -29,7 +28,7 @@ export default function Home() {
   return (
     <div className="home-container">
 
-      <h1 className="titulo-home">Produtos em oferta</h1>
+      <h1 className="titulo-home">Produtos em Oferta</h1>
 
       <div className="produtos-grid">
         {produtos.map((item) => (

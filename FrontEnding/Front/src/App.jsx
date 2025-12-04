@@ -1,20 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import Home from "./Pages/Home";
-import NossasLojas from "./Pages/NossasLojas"; // export default no index.jsx
+import NossasLojas from "./Pages/NossasLojas";
+import TrabalheConosco from "./Pages/TrabalheConosco";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header /> {/* Sempre no topo */}
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/lojas" element={<NossasLojas />} /> {/* Página Nossas Lojas */}
+        <Route path="/nossaslojas" element={<NossasLojas />} />
+        <Route path="/trabalheconosco" element={<TrabalheConosco />} />
       </Routes>
 
-      <Footer /> {/* Sempre no final */}
+      <Footer />
     </BrowserRouter>
   );
 }
