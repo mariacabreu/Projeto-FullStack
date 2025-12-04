@@ -1,52 +1,71 @@
 package com.example.Backend.service;
 
-import com.example.Backend.dto.UsuarioDTO;
-import com.example.Backend.model.UsuarioModel;
+import com.example.Backend.exception.BusinessException;
+import com.example.Backend.model.Usuario;
 import com.example.Backend.repository.UsuarioRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    public UsuarioRepository usuarioRepository;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
+    public Usuario cadastrar(Usuario usuario) {
 
-    public UsuarioModel cadastrarUsuario(UsuarioDTO dto) throws Exception {
-        if (usuarioRepository.existsByEmail(dto.getEmail())) {
-            throw new Exception("Email já cadastrado");
-        }
-        if (usuarioRepository.existsByCpf(dto.getCpf())) {
-            throw new Exception("CPF já cadastrado");
-        }
-        if (!dto.getSenha().equals(dto.getConfirmarSenha())) {
-            throw new Exception("Senha e confirmar senha não coincidem");
+        if (!validarCpf(usuario.getCpf())) {
+            throw new BusinessException("CPF inválido.");
         }
 
-        UsuarioModel usuario = new UsuarioModel();
-        usuario.setNomeCompleto(dto.getNomeCompleto());
-        usuario.setEmail(dto.getEmail());
-        usuario.setTelefone(dto.getTelefone());
-        usuario.setCpf(dto.getCpf());
-        usuario.setEndereco(dto.getEndereco());
-        usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
+        if (usuarioRepository.existsByEmail(usuario.getEmail())) {
+            throw new BusinessException("Email já cadastrado.");
+        }
+
+        if (usuarioRepository.existsByCpf(usuario.getCpf())) {
+            throw new BusinessException("CPF já cadastrado.");
+        }
+
+        Map<String, Object> endereco = buscarEnderecoViaCep(usuario.getCep());
+
+        usuario.setLogradouro((String) endereco.get("logradouro"));
+        usuario.setBairro((String) endereco.get("bairro"));
+        usuario.setCidade((String) endereco.get("localidade"));
+        usuario.setEstado((String) endereco.get("uf"));
 
         return usuarioRepository.save(usuario);
     }
 
-    public UsuarioModel login(String email, String senha) throws Exception {
-        UsuarioModel usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new Exception("Usuário não encontrado"));
+    // MÉTODO PRIVADO (usado internamente)
+    private boolean validarCpf(String cpf) {
+        return cpf != null && cpf.matches("\\d{11}");
+    }
 
-        if (!passwordEncoder.matches(senha, usuario.getSenha())) {
-            throw new Exception("Senha incorreta");
-        }
+    // MÉTODO PÚBLICO PARA O CONTROLLER
+    public boolean validarCpfPublic(String cpf) {
+        return validarCpf(cpf);
+    }
 
-        return usuario;
+    // Lógica interna
+    private Map<String, Object> buscarEnderecoViaCep(String cep) {
+        return Map.of(
+                "logradouro", "Rua Exemplo",
+                "bairro", "Centro",
+                "localidade", "Cidade Exemplo",
+                "uf", "SP"
+        );
+    }
+
+    // Método público exposto ao Controller
+    public Map<String, Object> buscarEnderecoViaCepPublic(String cep) {
+        return buscarEnderecoViaCep(cep);
+    }
+
+    // Buscar usuário por ID
+    public Usuario getById(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Usuário não encontrado."));
     }
 }

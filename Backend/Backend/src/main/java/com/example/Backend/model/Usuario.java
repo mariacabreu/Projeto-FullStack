@@ -14,21 +14,23 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nomeCompleto;
 
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
     private String telefone;
 
     @Column(unique = true, nullable = false)
     private String cpf;
 
-    @Column(nullable = false)
-    private String endereco;
+    // 🚨 Substituir "endereco" e adicionar novos campos:
+    private String cep;
 
-    @Column(nullable = false)
+    private String logradouro;
+    private String bairro;
+    private String cidade;
+    private String estado;
+
     private String senha;
 }
