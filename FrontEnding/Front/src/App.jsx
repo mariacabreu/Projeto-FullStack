@@ -1,12 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 import Header from "./components/Header/index.jsx";
-<<<<<<< HEAD
 import Footer from "./components/Footer/index.jsx";
-=======
-import Footer from "./components/Footer/index.jsx"; 
->>>>>>> f75ade6b6da493b4c0152bf929e0ae279d427d3d
 
 import Home from "./Pages/Home";
 import NossasLojas from "./Pages/NossasLojas";
@@ -14,7 +10,7 @@ import TrabalheConosco from "./Pages/TrabalheConosco";
 import Login from "./Pages/Login";
 import Cadastro from "./Pages/Cadastro";
 
-import Car from "./Pages/Carrinho/Car.jsx"; 
+import Car from "./Pages/Carrinho/Car.jsx";
 import Summary from "./Pages/Carrinho/Summary.jsx";
 
 function CarrinhoPage({ items, updateQty }) {
@@ -47,33 +43,17 @@ function CarrinhoPage({ items, updateQty }) {
   );
 }
 
-export default function App() {
+// ⚠️ Wrapper necessário para usar useLocation
+function AppContent() {
   const [items, setItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 
-<<<<<<< HEAD
- const addToCart = (item) => {
-  console.log("[App] addToCart recebido:", item);
+  const location = useLocation(); // ← Aqui pegamos a rota atual
 
-  setItems((prevItems) => {
-    const existing = prevItems.find((i) => i.id === item.id);
-    if (existing) {
-      console.log("[App] item existe — incrementar quantidade");
-      return prevItems.map((i) =>
-        i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-      );
-    } else {
-      console.log("[App] item novo — adicionando ao array");
-      return [...prevItems, { ...item, quantity: 1 }];
-    }
-  });
+  const ocultarHeaderFooter = 
+    location.pathname === "/login" || 
+    location.pathname === "/cadastro";
 
-  setCartCount((prev) => {
-    console.log("[App] cartCount antes:", prev, "depois:", prev + 1);
-    return prev + 1;
-  });
-};
-=======
   const addToCart = (item) => {
     console.log("[App] addToCart recebido:", item);
 
@@ -95,7 +75,6 @@ export default function App() {
       return prev + 1;
     });
   };
->>>>>>> f75ade6b6da493b4c0152bf929e0ae279d427d3d
 
   const updateQty = (id, type) => {
     setItems((prev) =>
@@ -119,8 +98,8 @@ export default function App() {
   console.log("[App] render — cartCount:", cartCount, "items:", items);
 
   return (
-    <BrowserRouter>
-      <Header cartCount={cartCount} />
+    <>
+      {!ocultarHeaderFooter && <Header cartCount={cartCount} />}
 
       <Routes>
         <Route path="/" element={<Home onAddToCart={addToCart} />} />
@@ -134,7 +113,16 @@ export default function App() {
         />
       </Routes>
 
-      <Footer />
+      {!ocultarHeaderFooter && <Footer />}
+    </>
+  );
+}
+
+// ⚠️ BrowserRouter precisa ficar fora do useLocation
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
