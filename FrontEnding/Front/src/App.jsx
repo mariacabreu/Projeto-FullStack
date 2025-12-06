@@ -1,84 +1,31 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
-// Componentes globais
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Header/index.jsx";
+import Footer from "./components/Footer/index.jsx";
 
-// Páginas
 import Home from "./Pages/Home";
 import NossasLojas from "./Pages/NossasLojas";
 import TrabalheConosco from "./Pages/TrabalheConosco";
-import Login from "./Pages/Login"; // Página de login
-import Cadastro from "./Pages/Cadastro"; // Página de cadastro
+import Login from "./Pages/Login";
+import Cadastro from "./Pages/Cadastro";
 
-// Componentes do carrinho (corrigindo os caminhos)
 import Car from "./Pages/Carrinho/Car.jsx"; 
 import Summary from "./Pages/Carrinho/Summary.jsx";
 
-function App() {
-  // Estado do carrinho
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      image: "/img/liquido.png",
-      title: "Lava Roupas Líquido Brilhante Limpeza Total 1,8L",
-      price: 19.5,
-      quantity: 42,
-    },
-    {
-      id: 2,
-      image: "/img/omo.png",
-      title: "Lava Roupas em Pó Omo Expert Roupas Brancas 720g",
-      price: 18.49,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      image: "/img/veja.png",
-      title: "Limpador Multiuso Veja Original 500ml",
-      price: 5.89,
-      quantity: 1,
-    },
-    {
-      id: 4,
-      image: "/img/ype.png",
-      title: "Limpador Multiuso Ypê Clássico 500ml",
-      price: 5.18,
-      quantity: 1,
-    },
-  ]);
-
-  // Atualizar quantidade
-  const updateQty = (id, type) => {
-    setItems(prev =>
-      prev.map(item =>
-        item.id === id
-          ? {
-              ...item,
-              quantity:
-                type === "add"
-                  ? item.quantity + 1
-                  : Math.max(1, item.quantity - 1),
-            }
-          : item
-      )
-    );
-  };
-
+function CarrinhoPage({ items, updateQty }) {
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
-  // Página do carrinho
-  const CarrinhoPage = () => (
+  return (
     <div className="container">
       <h1 className="title">Meu Carrinho</h1>
 
       <div className="content">
         <div className="cart">
-          {items.map(item => (
+          {items.map((item) => (
             <Car
               key={item.id}
               {...item}
@@ -94,31 +41,72 @@ function App() {
       <button className="continue">CONTINUAR</button>
     </div>
   );
+}
+
+export default function App() {
+  const [items, setItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
+ const addToCart = (item) => {
+  console.log("[App] addToCart recebido:", item);
+
+  setItems((prevItems) => {
+    const existing = prevItems.find((i) => i.id === item.id);
+    if (existing) {
+      console.log("[App] item existe — incrementar quantidade");
+      return prevItems.map((i) =>
+        i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+      );
+    } else {
+      console.log("[App] item novo — adicionando ao array");
+      return [...prevItems, { ...item, quantity: 1 }];
+    }
+  });
+
+  setCartCount((prev) => {
+    console.log("[App] cartCount antes:", prev, "depois:", prev + 1);
+    return prev + 1;
+  });
+};
+
+  const updateQty = (id, type) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity:
+                type === "add"
+                  ? item.quantity + 1
+                  : Math.max(1, item.quantity - 1),
+            }
+          : item
+      )
+    );
+
+    if (type === "add") setCartCount((prev) => prev + 1);
+    else setCartCount((prev) => Math.max(prev - 1, 0));
+  };
+
+  console.log("[App] render — cartCount:", cartCount, "items:", items);
 
   return (
     <BrowserRouter>
-      {/* Renderizamos Header/Footer apenas se NÃO estivermos em Login ou Cadastro */}
+      <Header cartCount={cartCount} />
+
       <Routes>
+        <Route path="/" element={<Home onAddToCart={addToCart} />} />
+        <Route path="/nossaslojas" element={<NossasLojas />} />
+        <Route path="/trabalheconosco" element={<TrabalheConosco />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route
-          path="*"
-          element={
-            <>
-              <Header />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/nossaslojas" element={<NossasLojas />} />
-                <Route path="/trabalheconosco" element={<TrabalheConosco />} />
-                <Route path="/carrinho" element={<CarrinhoPage />} />
-              </Routes>
-              <Footer />
-            </>
-          }
+          path="/carrinho"
+          element={<CarrinhoPage items={items} updateQty={updateQty} />}
         />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
-
-export default App;
