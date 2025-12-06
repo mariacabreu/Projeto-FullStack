@@ -1,6 +1,6 @@
 import "./style.css";
-// Componente
-import ProdutoCard from "../../components/ProdutosCard";
+// Componente ProdutoCard corrigido
+import ProdutosCard from "../../components/ProdutosCard.jsx";
 
 // Imports das imagens
 import Cafe from "../../assets/Cafe.png";
@@ -24,19 +24,37 @@ const produtos = [
   { id: 8, nome: "Omo líquido 1L", preco: 19.9, imagem: Omo },
 ];
 
-export default function Home() {
+export default function Home({ onAddToCart }) {
   return (
     <div className="home-container">
-
       <h1 className="titulo-home">Produtos em Oferta</h1>
 
       <div className="produtos-grid">
         {produtos.map((item) => (
-          <ProdutoCard
+          <ProdutosCard
             key={item.id}
             nome={item.nome}
             preco={item.preco}
             imagem={item.imagem}
+            onAdd={() => {
+              console.log("[Home] onAdd chamado para:", item.id, item.nome);
+              console.log("[Home] preparou objeto:", {
+                id: item.id,
+                title: item.nome,
+                price: item.preco,
+                image: item.imagem,
+              });
+              if (typeof onAddToCart === "function") {
+                onAddToCart({
+                  id: item.id,
+                  title: item.nome,
+                  price: item.preco,
+                  image: item.imagem,
+                });
+              } else {
+                console.log("[Home] onAddToCart NÃO é função:", onAddToCart);
+              }
+            }}
           />
         ))}
       </div>
