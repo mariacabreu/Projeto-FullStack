@@ -2,7 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Header from "./components/Header/index.jsx";
+<<<<<<< HEAD
 import Footer from "./components/Footer/index.jsx";
+=======
+import Footer from "./components/Footer/index.jsx"; 
+>>>>>>> f75ade6b6da493b4c0152bf929e0ae279d427d3d
 
 import Home from "./Pages/Home";
 import NossasLojas from "./Pages/NossasLojas";
@@ -47,6 +51,7 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 
+<<<<<<< HEAD
  const addToCart = (item) => {
   console.log("[App] addToCart recebido:", item);
 
@@ -68,6 +73,29 @@ export default function App() {
     return prev + 1;
   });
 };
+=======
+  const addToCart = (item) => {
+    console.log("[App] addToCart recebido:", item);
+
+    setItems((prevItems) => {
+      const existing = prevItems.find((i) => i.id === item.id);
+      if (existing) {
+        console.log("[App] item existe — incrementar quantidade");
+        return prevItems.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      } else {
+        console.log("[App] item novo — adicionando ao array");
+        return [...prevItems, { ...item, quantity: 1 }];
+      }
+    });
+
+    setCartCount((prev) => {
+      console.log("[App] cartCount antes:", prev, "depois:", prev + 1);
+      return prev + 1;
+    });
+  };
+>>>>>>> f75ade6b6da493b4c0152bf929e0ae279d427d3d
 
   const updateQty = (id, type) => {
     setItems((prev) =>
