@@ -1,118 +1,178 @@
-/* --- BASE GLOBAL (MANTENDO PADRÃO DO SITE) --- */ 
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+/* ================================
+        CONTAINER GERAL
+================================ */
+
+.cadastro-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
 }
 
-/* --- CONTAINER CENTRAL DO CADASTRO --- */
-.cadastro-page {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
 
-/* --- CAIXA DE CADASTRO (seguindo padrão visual dos cards) --- */
-.cadastro-box {
-  background: #fff;
-  width: 100%;
-  max-width: 420px;
+/* ================================
+        TÍTULO
+================================ */
 
-  padding: 35px;
-  border-radius: 15px;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* --- TÍTULO PADRÃO (mesmo estilo de títulos internos) --- */
 .cadastro-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
 }
 
-/* --- LABEL E INPUTS (padronizados) --- */
-.cadastro-box label {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #333;
+
+/* ================================
+        WRAPPER DOS DOIS CARDS
+================================ */
+
+.cadastro-content {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 100px;
+    /* 💎 AQUI VOCÊ AUMENTA A DISTÂNCIA ENTRE OS CARDS */
+    width: 100%;
+    max-width: none;
+    /* permite cards maiores */
+    justify-content: center;
+    overflow-x: auto;
+    /* impede quebra quando aumenta muito */
 }
 
-.cadastro-box input {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  outline: none;
+
+/* ================================
+        CARDS
+================================ */
+
+.info-card,
+.form-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-shrink: 0;
+    /* impede empurrar o outro */
 }
 
-.cadastro-box input:focus {
-  border-color: #303030;
+
+/* 💎 Card da ESQUERDA (INFORMAÇÕES) */
+
+.info-card {
+    width: 500px;
+    /* largura independente */
 }
 
-/* --- BOTÃO PRINCIPAL --- */
-.btn-cadastrar {
-  padding: 12px 20px;
-  background: #303030;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  margin-top: 8px;
-  transition: background 0.3s ease;
+
+/* 💎 Card da DIREITA */
+
+.form-card {
+    width: 500px;
+    /* largura independente */
 }
 
-.btn-cadastrar:hover {
-  background: #1f1f1f;
+
+/* ================================
+        TÍTULOS
+================================ */
+
+.info-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
 }
 
-/* --- LINKS (se for necessário adicionar depois) --- */
-.cadastro-links {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  font-size: 0.95rem;
-  margin-top: 5px;
+
+/* ================================
+        INPUTS
+================================ */
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
 }
 
-.cadastro-links a {
-  text-decoration: none;
-  color: #303030;
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    background: #fff;
 }
 
-.cadastro-links a:hover {
-  text-decoration: underline;
+input:focus {
+    border-color: #303030;
 }
 
-/* --- DIVISOR --- */
-.divider {
-  text-align: center;
-  margin: 15px 0 8px 0;
-  color: #555;
-  font-size: 0.9rem;
+
+/* ================================
+        GRID
+================================ */
+
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-/* --- RESPONSIVO --- */
-@media (max-width: 480px) {
 
-  .cadastro-box {
-    padding: 25px;
-  }
+/* ================================
+        ERROS
+================================ */
 
-  .cadastro-title {
-    font-size: 1.8rem;
-  }
+.erro {
+    font-size: 0.85rem;
+    color: #ff3b3b;
+    margin-top: -8px;
+}
+
+
+/* ================================
+        BOTÃO
+================================ */
+
+.btn-save-outside {
+    margin-top: 25px;
+    background: #303030;
+    padding: 12px 25px;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.btn-save-outside:hover {
+    background: #1f1f1f;
+}
+
+
+/* ================================
+        RESPONSIVO
+================================ */
+
+@media (max-width: 900px) {
+    .cadastro-content {
+        flex-direction: column;
+        align-items: center;
+        overflow-x: visible;
+    }
+    .info-card,
+    .form-card {
+        width: 100%;
+        margin: 0;
+    }
 }
