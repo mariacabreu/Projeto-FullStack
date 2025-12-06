@@ -28,14 +28,20 @@ export default function ProdutosCard({ imagem, nome, preco, badge, onAdd, onRemo
       <p className="produto-preco">R$ {preco.toFixed(2)}</p>
       <p className="produto-preco-info">ou R$ {(preco * 0.99).toFixed(2)} / cada</p>
 
-      {/* CONTADOR IGUAL AO DO EXEMPLO */}
-      <div className="produto-controle">
-        <button className="btn-menos" onClick={diminuir}>-</button>
+      {/* ---- BOTÃO IGUAL AO DA PRIMEIRA IMAGEM ---- */}
+      {quantidade === 0 ? (
+        <button className="btn-adicionar" onClick={aumentar}>
+          ADICIONAR
+        </button>
+      ) : (
+        <div className="produto-controle">
+          <button className="btn-menos" onClick={diminuir}>-</button>
 
-        <span className="produto-quantidade">{quantidade}</span>
+          <span className="produto-quantidade">{quantidade}</span>
 
-        <button className="btn-mais" onClick={aumentar}>+</button>
-      </div>
+          <button className="btn-mais" onClick={aumentar}>+</button>
+        </div>
+      )}
     </div>
   );
 }

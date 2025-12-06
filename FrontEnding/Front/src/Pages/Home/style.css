@@ -28,7 +28,7 @@ html, body {
 .produtos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  gap: 32px;
   justify-content: center;
   padding: 10px;
 }
